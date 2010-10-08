@@ -44,11 +44,11 @@ class acValidatorDoctrineCustomField extends sfValidatorBase
         return new sfValidatorDateTime(array(), array());
       break;
       case "textarea":
-        return new sfValidatorString(array('max_length' => 5, 'required'=>true));
+        return new sfValidatorString(array('required'=>true));
       break;
       case "text":
       default:
-        return new sfValidatorString(array('max_length' => 5, 'required' => true));
+        return new sfValidatorString(array('max_length' => 255, 'required' => true));
       break;
     }
   }

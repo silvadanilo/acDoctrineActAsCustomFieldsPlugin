@@ -9,14 +9,20 @@
  */
 class acValidatorDoctrineCustomFields extends sfValidatorBase
 {
+  protected function configure($options = array(), $attributes = array())
+  {
+    $this->addOption('acValidatorDoctrineCustomField', 'acValidatorDoctrineCustomField');
+    $class = $this->getOption('acValidatorDoctrineCustomField');
+  }
+
   protected function doClean($value)
   {
     $errors = array();
     $ret_value = array();
     foreach($value as $field)
     {
-      // If label and value is empty skip
-      if(!$field['label'] && !$field['value'])
+      // If label is empty skip
+      if(!$field['label'])
         continue;
 
       $acValidatorDoctrineCustomField = new acValidatorDoctrineCustomField();
