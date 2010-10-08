@@ -35,7 +35,7 @@ class Doctrine_Template_ExtraFields extends Doctrine_Template
   {
     $invoker = $this->getInvoker();
     if(isset($invoker->extra_fields[$field]))
-        return $invoker->extra_fields[$field];
+        return $invoker->extra_fields[$field]['value'];
     else
         throw new Doctrine_Record_UnknownPropertyException();
   }
