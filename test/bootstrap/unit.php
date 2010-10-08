@@ -11,20 +11,20 @@ sfCoreAutoload::register();
 $configuration = new sfProjectConfiguration(dirname(__FILE__).'/../fixtures/project');
 require_once $configuration->getSymfonyLibDir().'/vendor/lime/lime.php';
 
-function acDoctrineActAsExtraFieldsPlugin_autoload_again($class)
+function acDoctrineActAsCustomFieldsPlugin_autoload_again($class)
 {
   $autoload = sfSimpleAutoload::getInstance();
   $autoload->reload();
   return $autoload->autoload($class);
 }
-spl_autoload_register('acDoctrineActAsExtraFieldsPlugin_autoload_again');
+spl_autoload_register('acDoctrineActAsCustomFieldsPlugin_autoload_again');
 
-if (file_exists($config = dirname(__FILE__).'/../../config/acDoctrineActAsExtraFieldsPluginConfiguration.class.php'))
+if (file_exists($config = dirname(__FILE__).'/../../config/acDoctrineActAsCustomFieldsPluginConfiguration.class.php'))
 {
   require_once $config;
-  $plugin_configuration = new acDoctrineActAsExtraFieldsPluginConfiguration($configuration, dirname(__FILE__).'/../..', 'acDoctrineActAsExtraFieldsPlugin');
+  $plugin_configuration = new acDoctrineActAsCustomFieldsPluginConfiguration($configuration, dirname(__FILE__).'/../..', 'acDoctrineActAsCustomFieldsPlugin');
 }
 else
 {
-  $plugin_configuration = new sfPluginConfigurationGeneric($configuration, dirname(__FILE__).'/../..', 'acDoctrineActAsExtraFieldsPlugin');
+  $plugin_configuration = new sfPluginConfigurationGeneric($configuration, dirname(__FILE__).'/../..', 'acDoctrineActAsCustomFieldsPlugin');
 }

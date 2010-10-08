@@ -1,6 +1,6 @@
 <?php
 
-class acValidatorDoctrineExtraField extends sfValidatorBase
+class acValidatorDoctrineCustomField extends sfValidatorBase
 {
   protected function doClean($value)
   {

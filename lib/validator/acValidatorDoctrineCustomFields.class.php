@@ -1,6 +1,6 @@
 <?php
 
-class acValidatorDoctrineExtraFields extends sfValidatorBase
+class acValidatorDoctrineCustomFields extends sfValidatorBase
 {
   protected function doClean($value)
   {
@@ -11,9 +11,9 @@ class acValidatorDoctrineExtraFields extends sfValidatorBase
       if(!$field['label'] && !$field['value'])
         continue;
 
-      $acValidatorDoctrineExtraField = new acValidatorDoctrineExtraField();
+      $acValidatorDoctrineCustomField = new acValidatorDoctrineCustomField();
 
-      $field_value = $acValidatorDoctrineExtraField->doClean($field);
+      $field_value = $acValidatorDoctrineCustomField->doClean($field);
       $ret_value = array_merge($ret_value,$field_value);
     }
 

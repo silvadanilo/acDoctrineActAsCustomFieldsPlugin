@@ -1,0 +1,20 @@
+.ac_widget_custom_field_value
+{
+  width: 300px;
+}
+
+.ac_widget_custom_field_label
+{
+  width: 200px;
+}
+
+.custom_field_row img:hover
+{
+  cursor: pointer;
+}
+
+.ac_widget_custom_field_type_textarea
+{
+  padding: 0px !important;
+  margin-bottom: -10px;
+}

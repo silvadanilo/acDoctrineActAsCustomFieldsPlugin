@@ -1,6 +1,6 @@
 <?php
 
-class acWidgetFormDoctrineExtraField extends sfWidgetForm
+class acWidgetFormDoctrineCustomField extends sfWidgetForm
 {
   protected function configure($options = array(), $attributes = array())
   {
@@ -9,8 +9,8 @@ class acWidgetFormDoctrineExtraField extends sfWidgetForm
 
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
-    $span_name = "extra_field_row_" . $this->generateId($name);
-    $to_return = '<p id="'.$span_name.'" class="extra_field_row"><span>Nome : Valore &nbsp;</span>';
+    $span_name = "custom_field_row_" . $this->generateId($name);
+    $to_return = '<p id="'.$span_name.'" class="custom_field_row"><span>Nome : Valore &nbsp;</span>';
 
     if(!$value)
     {
@@ -24,15 +24,15 @@ class acWidgetFormDoctrineExtraField extends sfWidgetForm
 
     // Label widget
     $label_widget  = new sfWidgetFormInputText();
-    $to_return    .= $label_widget->render($name.'[label]', $value['label'], array_merge(array('class'=>'ac_widget_extra_field_label'),$attributes));
+    $to_return    .= $label_widget->render($name.'[label]', $value['label'], array_merge(array('class'=>'ac_widget_custom_field_label'),$attributes));
 
     // Value widget
     $value_widget  = $this->getWidgetFromType($value['type']);
-    $to_return   .= "&nbsp;:&nbsp;".$value_widget->render($name.'[value]', $value['value'], array_merge(array('class'=>'ac_widget_extra_field_value ac_widget_extra_field_type_'.$value['type']),$attributes));
+    $to_return   .= "&nbsp;:&nbsp;".$value_widget->render($name.'[value]', $value['value'], array_merge(array('class'=>'ac_widget_custom_field_value ac_widget_custom_field_type_'.$value['type']),$attributes));
 
     // Type widget
     $type_widget = new sfWidgetFormInputHidden();
-    $to_return  .= $type_widget->render($name.'[type]', $value['type'], array_merge(array('class'=>'ac_widget_extra_field_type'),$attributes));
+    $to_return  .= $type_widget->render($name.'[type]', $value['type'], array_merge(array('class'=>'ac_widget_custom_field_type'),$attributes));
 
     $to_return .= '&nbsp;<button onclick="$(\'#'.$span_name.'\').remove(); return false;"><img src="/sf/sf_admin/images/delete.png">&nbsp;Elimina</button></p>';
 

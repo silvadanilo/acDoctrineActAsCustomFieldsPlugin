@@ -3,11 +3,11 @@
 /**
  * 
  *
- * @package acDoctrineActAsExtraFieldsPlugin
+ * @package acDoctrineActAsCustomFieldsPlugin
  * @subpackage listener
  * @author 
  **/
-class Doctrine_Template_Listener_ExtraFields extends Doctrine_Record_Listener
+class Doctrine_Template_Listener_CustomFields extends Doctrine_Record_Listener
 {
 
   protected $_options;
@@ -17,7 +17,7 @@ class Doctrine_Template_Listener_ExtraFields extends Doctrine_Record_Listener
     $this->_options = $options;
   }
 
-//  public function setExtraFields()
+//  public function setCustomFields()
 //  {
 //
 //  }
