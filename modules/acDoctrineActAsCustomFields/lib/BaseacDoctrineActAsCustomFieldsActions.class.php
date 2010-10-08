@@ -5,8 +5,8 @@
  * 
  * @package     acDoctrineActAsCustomFieldsPlugin
  * @subpackage  acDoctrineActAsCustomFields
- * @author      Anycode
- * @version     SVN: $Id: BaseActions.class.php 12534 2008-11-01 13:38:27Z Kris.Wallsmith $
+ * @author      Danilo Silva <danilo@anycode.it>
+ * @version     
  */
 abstract class BaseacDoctrineActAsCustomFieldsActions extends sfActions
 {

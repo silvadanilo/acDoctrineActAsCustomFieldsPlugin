@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * CustomField Widget.
+ *
+ * @package     acDoctrineActAsCustomFieldsPlugin
+ * @subpackage  widget
+ * @author      Danilo Silva <danilo@anycode.it>
+ */
 class acWidgetFormDoctrineCustomField extends sfWidgetForm
 {
   protected function configure($options = array(), $attributes = array())
   {
-    
+    $this->addOption('default_type','text');
   }
 
   public function render($name, $value = null, $attributes = array(), $errors = array())
@@ -22,13 +29,20 @@ class acWidgetFormDoctrineCustomField extends sfWidgetForm
       );
     }
 
+    if(!isset($value['type']) || !$value['type'])
+      $value['type'] = "text";
+
     // Label widget
+    $label_attributes = $attributes;
+    $label_attributes["class"] = (isset($label_attributes["class"])?$label_attributes["class"] . " ":"")."ac_widget_custom_field_label";
     $label_widget  = new sfWidgetFormInputText();
-    $to_return    .= $label_widget->render($name.'[label]', $value['label'], array_merge(array('class'=>'ac_widget_custom_field_label'),$attributes));
+    $to_return    .= $label_widget->render($name.'[label]', $value['label'], $label_attributes);
 
     // Value widget
+    $value_attributes = $attributes;
+    $value_attributes["class"] = (isset($value_attributes["class"])?$value_attributes["class"] . " ":"")."ac_widget_custom_field_value ac_widget_custom_field_type_".$value['type'];
     $value_widget  = $this->getWidgetFromType($value['type']);
-    $to_return   .= "&nbsp;:&nbsp;".$value_widget->render($name.'[value]', $value['value'], array_merge(array('class'=>'ac_widget_custom_field_value ac_widget_custom_field_type_'.$value['type']),$attributes));
+    $to_return   .= "&nbsp;:&nbsp;".$value_widget->render($name.'[value]', $value['value'], $value_attributes);
 
     // Type widget
     $type_widget = new sfWidgetFormInputHidden();

@@ -1,12 +1,11 @@
 <?php
 
 /**
- * acDoctrineActAsCustomFieldsPlugin configuration.
- * 
+ * CustomFields Plugin Configuration.
+ *
  * @package     acDoctrineActAsCustomFieldsPlugin
- * @subpackage  config
- * @author      Anycode
- * @version     SVN: $Id: PluginConfiguration.class.php 17207 2009-04-10 15:36:26Z Kris.Wallsmith $
+ * @subpackage  configuration
+ * @author      Danilo Silva <danilo@anycode.it>
  */
 class acDoctrineActAsCustomFieldsPluginConfiguration extends sfPluginConfiguration
 {

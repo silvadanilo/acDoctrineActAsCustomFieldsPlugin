@@ -7,8 +7,8 @@ require_once dirname(__FILE__).'/../lib/BaseacDoctrineActAsCustomFieldsActions.c
  * 
  * @package    acDoctrineActAsCustomFieldsPlugin
  * @subpackage acDoctrineActAsCustomFields
- * @author     Anycode
- * @version    SVN: $Id: actions.class.php 12534 2008-11-01 13:38:27Z Kris.Wallsmith $
+ * @author     Danilo Silva <danilo@anycode.it>
+ * @version    
  */
 class acDoctrineActAsCustomFieldsActions extends BaseacDoctrineActAsCustomFieldsActions
 {

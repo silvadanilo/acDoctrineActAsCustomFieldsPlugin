@@ -7,8 +7,7 @@
  *
  * @package acDoctrineActAsCustomFieldsPlugin
  * @subpackage template
- * @author 
- * @author 
+ * @author      Danilo Silva <danilo@anycode.it>
  **/
 class Doctrine_Template_CustomFields extends Doctrine_Template
 {

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * CustomFields Widget.
+ *
+ * @package     acDoctrineActAsCustomFieldsPlugin
+ * @subpackage  widget
+ * @author      Danilo Silva <danilo@anycode.it>
+ */
 class acWidgetFormDoctrineCustomFields extends sfWidgetForm
 {
   protected function configure($options = array(), $attributes = array())

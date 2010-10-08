@@ -1,12 +1,13 @@
 <?php
 
+
 /**
- * 
+ * CustomFields Doctrine Listener.
  *
- * @package acDoctrineActAsCustomFieldsPlugin
- * @subpackage listener
- * @author 
- **/
+ * @package     acDoctrineActAsCustomFieldsPlugin
+ * @subpackage  listener
+ * @author      Danilo Silva <danilo@anycode.it>
+ */
 class Doctrine_Template_Listener_CustomFields extends Doctrine_Record_Listener
 {
 
@@ -16,9 +17,4 @@ class Doctrine_Template_Listener_CustomFields extends Doctrine_Record_Listener
   {
     $this->_options = $options;
   }
-
-//  public function setCustomFields()
-//  {
-//
-//  }
 }
