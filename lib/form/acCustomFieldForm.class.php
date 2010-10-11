@@ -28,9 +28,9 @@ class acCustomFieldForm extends sfFormSymfony
       'value'        => $this->getValueValidator($type),
     ));
 
-    $this->validatorSchema->setPostValidator(
-      new sfValidatorCallback(array('callback' => array($this, 'checkLabelAndValue')))
-    );
+//    $this->validatorSchema->setPostValidator(
+//      new sfValidatorCallback(array('callback' => array($this, 'checkLabelAndValue')))
+//    );
 
     $this->setDefault('type', $type);
 

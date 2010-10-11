@@ -14,20 +14,24 @@ class acWidgetFormDoctrineCustomFields extends sfWidgetForm
     $this->addRequiredOption('form');
     $this->addOption('types',array('text'=>'text','textarea'=>'textarea','date'=>'date'));
 
-    $form = $options['form'];
-    $customFields = $form->getObject()->custom_fields;
-    if(!$customFields)
-      $customFields = array(''=>array('value'=>'','type'=>'text'));
-
-    $customFieldsSubForm = new acCustomFieldsForm();
-    $i = 0;
-    foreach($customFields as $label => $value)
-    {
-      $acCFForm = new acCustomFieldForm(array(),array('type'=>$value['type']));
-      $customFieldsSubForm->embedForm($i, $acCFForm);
-      $i++;
-    }
-    $form->embedForm('custom_fields', $customFieldsSubForm);
+//    $form = $options['form'];
+//    $customFieldsSubForm = new acCustomFieldsForm();
+//    $form->embedForm('custom_fields', $customFieldsSubForm);
+    
+//    $form = $options['form'];
+//    $customFields = $form->getObject()->custom_fields;
+//    if(!$customFields)
+//      $customFields = array(''=>array('value'=>'','type'=>'text'));
+//
+//    $customFieldsSubForm = new acCustomFieldsForm();
+//    $i = 0;
+//    foreach($customFields as $label => $value)
+//    {
+//      $acCFForm = new acCustomFieldForm(array(),array('type'=>$value['type']));
+//      $customFieldsSubForm->embedForm($i, $acCFForm);
+//      $i++;
+//    }
+//    $form->embedForm('custom_fields', $customFieldsSubForm);
   }
 
   public function render($name, $value = null, $attributes = array(), $errors = array())
