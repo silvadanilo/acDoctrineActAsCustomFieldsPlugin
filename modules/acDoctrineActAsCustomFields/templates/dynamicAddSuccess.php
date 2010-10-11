@@ -1,1 +1,0 @@
-<?php echo $sf_data->getRaw("widget")->render($name, array('label'=>'','type'=>$type,'value'=>''), array()); ?>
