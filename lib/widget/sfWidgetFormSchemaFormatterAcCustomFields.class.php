@@ -19,7 +19,7 @@
 class sfWidgetFormSchemaFormatterAcCustomFields extends sfWidgetFormSchemaFormatter
 {
   protected
-    $rowFormat       = "<tr colspan='3'>%error%%field%%help%%hidden_fields%</tr>\n",
+    $rowFormat       = "<tr id=\"%tr_id%\">%error%%field%%help%%hidden_fields%<td><button onclick=\"$('#%tr_id%').remove(); return false;\"><img src=\"/sf/sf_admin/images/delete.png\">&nbsp;Elimina</button></td></tr>\n",
     $errorRowFormat  = "<tr><td colspan=\"2\">\n%errors%</td></tr>\n",
     $helpFormat      = '<br />%help%',
     $decoratorFormat = '
@@ -30,15 +30,22 @@ class sfWidgetFormSchemaFormatterAcCustomFields extends sfWidgetFormSchemaFormat
           </button>&nbsp;
           <img id="ac_custom_field_ajax_loader_image" src="/acDoctrineActAsCustomFieldsPlugin/images/ajax-loader.gif" style="display:none;" />
         </p>
-        <table><thead><tr><th>Name</th><th>Value</th><th>Tipo</th></tr></thead><tbody>%content%</tbody></table>
+        <table><thead><tr><th>Name</th><th>Value</th><th>Tipo</th><th>&nbsp;</th></tr></thead><tbody>%content%</tbody></table>
       </div>
       <script type="text/javascript">var dynamicAddUrl="%dynamicAddUrl%" </script>';
 
   public function getDecoratorFormat()
   {
+//    var_dump($this->getWidgetSchema()); exit;
     return strtr($this->decoratorFormat,array(
         "%dynamicAddUrl%" => '/admin.php/acDoctrineActAsCustomFields/dynamicAdd',
-        "%name%" => ""
+    ));
+  }
+
+  public function formatRow($label, $field, $errors = array(), $help = '', $hiddenFields = null)
+  {
+    return strtr(parent::formatRow($label,$field,$errors,$help,$hiddenFields),array(
+        "%tr_id%"=>"ac_custom_field_tr_".$label,
     ));
   }
 }
