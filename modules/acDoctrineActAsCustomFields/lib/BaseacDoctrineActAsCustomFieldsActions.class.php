@@ -12,8 +12,13 @@ abstract class BaseacDoctrineActAsCustomFieldsActions extends sfActions
 {
   public function executeDynamicAdd(sfWebRequest $request)
   {
-    $this->name = $request->getParameter("name");
-    $this->type = $request->getParameter("type");
-    $this->widget = new acWidgetFormDoctrineCustomField();
+    $name = $request->getParameter('name');
+    $type = $request->getParameter('type','text');
+    
+    $formFields = new acCustomFieldsForm();
+    $formField = new acCustomFieldForm(array(),array('type'=>$type));
+    $formFields->embedForm($name,$formField);
+
+    return $this->renderText($formFields->getWidgetSchema()->getFormFormatter()->formatRow($name,$formFields[$name]));
   }
 }

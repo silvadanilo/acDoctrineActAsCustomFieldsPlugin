@@ -14,17 +14,25 @@ class acCustomFieldForm extends sfFormSymfony
 {
   public function setup()
   {
+    $type = $this->getOption('type','text');
+
     $this->setWidgets(array(
       'label'        => new sfWidgetFormInputText(),
       'type'         => new sfWidgetFormInputText(),
-      'value'        => new sfWidgetFormInputText(),
+      'value'        => $this->getValueWidget($type),
     ));
 
     $this->setValidators(array(
-      'label'        => new sfValidatorString(array('max_length' => 255)),
+      'label'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'type'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'value'        => new sfValidatorPass(),
+      'value'        => $this->getValueValidator($type),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorCallback(array('callback' => array($this, 'checkLabelAndValue')))
+    );
+
+    $this->setDefault('type', $type);
 
     $this->widgetSchema->setNameFormat('ac_custom_fields[%s]');
 
@@ -35,9 +43,34 @@ class acCustomFieldForm extends sfFormSymfony
     parent::setup();
   }
 
-  public function getModelName()
+  public function checkLabelAndValue($validator,$values)
   {
-    return 'acCustomField';
+    if($values['value'] && !$values['label'])
+    {
+      throw new sfValidatorError($validator, 'Label is required.');
+    }
+
+    return $values;
   }
 
+  private function getValueWidget($type)
+  {
+    switch($type)
+    {
+      case "date":
+        return new sfWidgetFormDateTime();
+      break;
+      case "textarea":
+        return new sfWidgetFormTextarea();
+      break;
+      case "text":
+      default:
+        return new sfWidgetFormInputText();
+    }
+  }
+
+  private function getValueValidator($type)
+  {
+    return new sfValidatorString(array('required' => false));
+  }
 }

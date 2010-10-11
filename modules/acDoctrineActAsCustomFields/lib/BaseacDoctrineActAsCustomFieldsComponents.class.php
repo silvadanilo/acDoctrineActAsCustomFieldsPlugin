@@ -10,8 +10,4 @@
  */
 abstract class BaseacDoctrineActAsCustomFieldsComponents extends sfComponents
 {
-  public function executeShowCustomFieldsWidget(sfWebRequest $request)
-  {
-    
-  }
 }
