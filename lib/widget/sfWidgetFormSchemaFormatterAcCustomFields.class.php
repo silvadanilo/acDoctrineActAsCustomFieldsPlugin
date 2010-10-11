@@ -36,7 +36,6 @@ class sfWidgetFormSchemaFormatterAcCustomFields extends sfWidgetFormSchemaFormat
 
   public function getDecoratorFormat()
   {
-    echo $this->getWidgetSchema()->getNameFormat();exit;
     return strtr($this->decoratorFormat,array(
         "%dynamicAddUrl%" => '/admin.php/acDoctrineActAsCustomFields/dynamicAdd',
         "%name%" => ""
