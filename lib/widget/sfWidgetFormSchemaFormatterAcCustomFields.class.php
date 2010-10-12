@@ -22,25 +22,26 @@ class sfWidgetFormSchemaFormatterAcCustomFields extends sfWidgetFormSchemaFormat
     $rowFormat       = "<tr id=\"%tr_id%\">%error%%field%%help%%hidden_fields%<td><button onclick=\"$('#%tr_id%').remove(); return false;\"><img src=\"/sf/sf_admin/images/delete.png\">&nbsp;Elimina</button></td></tr>\n",
     $errorRowFormat  = "<tr><td colspan=\"2\">\n%errors%</td></tr>\n",
     $helpFormat      = '<br />%help%',
-    $decoratorFormat = '
-      <div id="ac_custom_fields_widget">
-        <p>
-          %widget_type%
-          <button onclick="addCustomFieldsRow(\'%name%\',\'%id%\'); return false;">
-            <img src="/sf/sf_admin/images/add.png" style="vertical-align:text-top;"/>&nbsp;Aggiungi
-          </button>&nbsp;
-          <img id="ac_custom_field_ajax_loader_image" src="/acDoctrineActAsCustomFieldsPlugin/images/ajax-loader.gif" style="display:none;" />
-        </p>
-        <table id="table_%id%"><thead><tr><th>Name</th><th>Value</th><th>Tipo</th><th>&nbsp;</th></tr></thead><tbody>%content%</tbody></table>
-      </div>
-      <script type="text/javascript">var dynamicAddUrl="%dynamicAddUrl%" </script>';
+    $decoratorFormat = '%content%';
+//    $decoratorFormat = '
+//      <div id="ac_custom_fields_widget">
+//        <p>
+//          %widget_type%
+//          <button onclick="addCustomFieldsRow(\'%name%\',\'%id%\'); return false;">
+//            <img src="/sf/sf_admin/images/add.png" style="vertical-align:text-top;"/>&nbsp;Aggiungi
+//          </button>&nbsp;
+//          <img id="ac_custom_field_ajax_loader_image" src="/acDoctrineActAsCustomFieldsPlugin/images/ajax-loader.gif" style="display:none;" />
+//        </p>
+//        <table id="table_%id%"><thead><tr><th>Name</th><th>Value</th><th>Tipo</th><th>&nbsp;</th></tr></thead><tbody>%content%</tbody></table>
+//      </div>
+//      <script type="text/javascript">var dynamicAddUrl="%dynamicAddUrl%" </script>';
 
-  public function getDecoratorFormat()
-  {
-    return strtr($this->decoratorFormat,array(
-        "%dynamicAddUrl%" => sfContext::getInstance()->getController()->genUrl('acDoctrineActAsCustomFields/dynamicAdd'),
-    ));
-  }
+//  public function getDecoratorFormat()
+//  {
+//    return strtr($this->decoratorFormat,array(
+//        "%dynamicAddUrl%" => sfContext::getInstance()->getController()->genUrl('acDoctrineActAsCustomFields/dynamicAdd'),
+//    ));
+//  }
 
   public function formatRow($label, $field, $errors = array(), $help = '', $hiddenFields = null)
   {

@@ -18,7 +18,7 @@ class acCustomFieldForm extends sfFormSymfony
 
     $this->setWidgets(array(
       'label'        => new sfWidgetFormInputText(),
-      'type'         => new sfWidgetFormInputText(),
+      'type'         => new sfWidgetFormInputHidden(),
       'value'        => $this->getValueWidget($type),
     ));
 
