@@ -20,9 +20,6 @@ class acCustomFieldsForm extends sfForm
 
     $this->widgetSchema->setFormFormatterName('acCustomFields');
 
-//    $this->validatorSchema->setOption('allow_extra_fields', true);
-//    $this->validatorSchema->setOption('filter_extra_fields', false);
-
     parent::setup();
   }
 }

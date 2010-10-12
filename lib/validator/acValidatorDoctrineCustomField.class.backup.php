@@ -8,6 +8,10 @@
  * @author      Danilo Silva <danilo@anycode.it>
  */
 
+
+/*******************************************************
+ * CLASSE NON PIU UTILIZZATA
+ ******************************************************/
 class acValidatorDoctrineCustomField extends sfValidatorBase
 {
   protected function doClean($value)

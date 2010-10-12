@@ -28,9 +28,9 @@ class acCustomFieldForm extends sfFormSymfony
       'value'        => $this->getValueValidator($type),
     ));
 
-//    $this->validatorSchema->setPostValidator(
-//      new sfValidatorCallback(array('callback' => array($this, 'checkLabelAndValue')))
-//    );
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorCallback(array('callback' => array($this, 'checkLabelAndValue')))
+    );
 
     $this->setDefault('type', $type);
 
@@ -47,7 +47,17 @@ class acCustomFieldForm extends sfFormSymfony
   {
     if($values['value'] && !$values['label'])
     {
-      throw new sfValidatorError($validator, 'Label is required.');
+      $error_field = "label";
+    }
+    if($values['label'] && !$values['value'])
+    {
+      $error_field = "value";
+    }
+
+    if(isset($error_field))
+    {
+      $error = new sfValidatorError($validator, $error_field . ' is required.', array());
+      throw new sfValidatorErrorSchema($validator, array($error_field => $error));
     }
 
     return $values;

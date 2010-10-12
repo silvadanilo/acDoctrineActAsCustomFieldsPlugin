@@ -51,19 +51,19 @@ class acDoctrineActAsCustomFieldsPluginConfiguration extends sfPluginConfigurati
         $form->embedForm('custom_fields', $ac_custom_fields_form);
         $original_form->setOption('_ac_custom_fields',$path);
       }
-    }
 
-    $request = sfContext::getInstance()->getRequest();
-    if($request->isMethod('put') || $request->isMethod('post'))
-    {
-      if($request->hasParameter($form->getName()))
+      $request = sfContext::getInstance()->getRequest();
+      if($request->isMethod('put') || $request->isMethod('post'))
       {
-        self::bo($form,$request->getParameter($form->getName()));
+        if($request->hasParameter($form->getName()))
+        {
+          self::embedAcCustomFieldsFormFromRequest($form,$request->getParameter($form->getName()));
+        }
       }
     }
   }
 
-  public static function bo($form, $values)
+  public static function embedAcCustomFieldsFormFromRequest($form, $values)
   {
     $embeddedForms = $form->getEmbeddedForms();
     if(isset($embeddedForms['custom_fields']))
@@ -85,7 +85,7 @@ class acDoctrineActAsCustomFieldsPluginConfiguration extends sfPluginConfigurati
     {
       foreach($embeddedForms as $key => $embeddedForm)
       {
-        $ret_form = self::bo($embeddedForm,$values[$key]);
+        $ret_form = self::embedAcCustomFieldsFormFromRequest($embeddedForm,$values[$key]);
         if($ret_form)
         {
           $form->embedForm($key,$ret_form);

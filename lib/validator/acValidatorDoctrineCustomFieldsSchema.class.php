@@ -1,22 +1,13 @@
 <?php
 
-/*
- * This file is part of the symfony package.
- * (c) Fabien Potencier <fabien.potencier@symfony-project.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 /**
- * sfValidatorSchema represents an array of fields.
+ * acValidatorDoctrineCustomFieldsSchema Validator.
+ * 
+ * For delete blank label/value pairs
  *
- * A field is a named validator.
- *
- * @package    symfony
- * @subpackage validator
- * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfValidatorSchema.class.php 22446 2009-09-26 07:55:47Z fabien $
+ * @package     acDoctrineActAsCustomFieldsPlugin
+ * @subpackage  validator
+ * @author      Danilo Silva <danilo@anycode.it>
  */
 class acValidatorDoctrineCustomFieldsSchema extends sfValidatorSchema
 {
@@ -130,6 +121,8 @@ class acValidatorDoctrineCustomFieldsSchema extends sfValidatorSchema
       throw $errorSchema;
     }
 
+    // Delete blanks fields and values pairs
+    // Elimino le coppie di campi e valori vuote
     $ret = array();
     foreach($clean as $key => $c)
     {

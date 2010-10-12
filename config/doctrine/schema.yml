@@ -1,5 +1,0 @@
-acCustomFields:
-  columns:
-    label:                { type: string(255), notnull: true }
-    type:                 { type: string(255), notnull: false }
-    value:                { type: text, notnull: true }

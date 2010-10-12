@@ -7,6 +7,10 @@
  * @subpackage  widget
  * @author      Danilo Silva <danilo@anycode.it>
  */
+
+/*******************************************************
+ * CLASSE NON PIU UTILIZZATA
+ ******************************************************/
 class acWidgetFormDoctrineCustomFields extends sfWidgetForm
 {
   protected function configure($options = array(), $attributes = array())

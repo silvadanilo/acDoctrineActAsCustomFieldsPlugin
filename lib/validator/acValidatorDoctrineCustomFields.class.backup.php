@@ -7,6 +7,10 @@
  * @subpackage  validator
  * @author      Danilo Silva <danilo@anycode.it>
  */
+
+/*******************************************************
+ * CLASSE NON PIU UTILIZZATA
+ ******************************************************/
 class acValidatorDoctrineCustomFields extends sfValidatorBase
 {
   protected function configure($options = array(), $attributes = array())
